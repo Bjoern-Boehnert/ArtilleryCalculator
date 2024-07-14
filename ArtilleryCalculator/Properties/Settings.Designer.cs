@@ -97,13 +97,13 @@ namespace ArtilleryCalculator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool EnableRussiaConversion {
+        [global::System.Configuration.DefaultSettingValueAttribute("Axis/Allies")]
+        public string ConversionMode {
             get {
-                return ((bool)(this["EnableRussiaConversion"]));
+                return ((string)(this["ConversionMode"]));
             }
             set {
-                this["EnableRussiaConversion"] = value;
+                this["ConversionMode"] = value;
             }
         }
     }

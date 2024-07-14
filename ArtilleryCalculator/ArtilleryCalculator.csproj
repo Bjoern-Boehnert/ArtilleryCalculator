@@ -97,6 +97,7 @@
     <Compile Include="ArtilleryTimingCalculator.cs" />
     <Compile Include="BaseWindowsHookListener.cs" />
     <Compile Include="RusDistanceElevationConverter.cs" />
+    <Compile Include="BritishDistanceElevationConverter.cs" />
     <Compile Include="DistanceElevationConverter.cs" />
     <Compile Include="CalculatorForm.cs">
       <SubType>Form</SubType>

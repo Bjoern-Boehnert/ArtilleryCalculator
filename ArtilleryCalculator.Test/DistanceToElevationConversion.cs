@@ -54,5 +54,30 @@ namespace ArtilleryCalculator.Test
                 Assert.Equal(tuple.Item2, Math.Round(converter.ConvertDistanceToElevation(tuple.Item1)));
             }
         }
+
+        [Fact]
+        public void TestBritishDistanceToElevationConversion()
+        {
+            var tuples = new Tuple<decimal, decimal>[]
+            {
+                // Values taken from in-game UI
+                Tuple.Create(1600m, 267m),
+                Tuple.Create(1500m, 285m),
+                Tuple.Create(1400m, 302m),
+                Tuple.Create(1000m, 373m),
+                Tuple.Create(900m, 391m),
+                Tuple.Create(600m, 444m),
+                Tuple.Create(500m, 462m),
+                Tuple.Create(200m, 515m),
+                Tuple.Create(100m, 533m),
+            };
+
+            IDistanceElevationConverter converter = new BritishDistanceElevationConverter();
+
+            foreach (var tuple in tuples)
+            {
+                Assert.Equal(tuple.Item2, Math.Round(converter.ConvertDistanceToElevation(tuple.Item1)));
+            }
+        }
     }
 }

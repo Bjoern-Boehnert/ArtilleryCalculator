@@ -20,8 +20,8 @@
     <Setting Name="ShouldCheckForUpdates" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="EnableRussiaConversion" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="ConversionMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Axis/Allies</Value>
     </Setting>
   </Settings>
 </SettingsFile>

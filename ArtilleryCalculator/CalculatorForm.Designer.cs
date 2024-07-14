@@ -40,8 +40,8 @@
             this.lastHitLabel = new System.Windows.Forms.Label();
             this.lastHitCountdownLabel = new System.Windows.Forms.Label();
             this.clickTimerUpdateTimer = new System.Windows.Forms.Timer(this.components);
-            this.enableRussiaConversion = new System.Windows.Forms.CheckBox();
             this.transparentCheckbox = new System.Windows.Forms.CheckBox();
+            this.modeComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.distanceInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elevationInput)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             this.enableNumpadCheckbox.Location = new System.Drawing.Point(256, 28);
             this.enableNumpadCheckbox.Name = "enableNumpadCheckbox";
             this.enableNumpadCheckbox.Size = new System.Drawing.Size(107, 17);
-            this.enableNumpadCheckbox.TabIndex = 5;
+            this.enableNumpadCheckbox.TabIndex = 6;
             this.enableNumpadCheckbox.Text = "Listen to numpad";
             this.enableNumpadCheckbox.UseVisualStyleBackColor = true;
             this.enableNumpadCheckbox.CheckedChanged += new System.EventHandler(this.enableNumpadCheckbox_CheckedChanged);
@@ -137,7 +137,7 @@
             this.stayOnTopCheckbox.Location = new System.Drawing.Point(256, 5);
             this.stayOnTopCheckbox.Name = "stayOnTopCheckbox";
             this.stayOnTopCheckbox.Size = new System.Drawing.Size(80, 17);
-            this.stayOnTopCheckbox.TabIndex = 4;
+            this.stayOnTopCheckbox.TabIndex = 5;
             this.stayOnTopCheckbox.Text = "Stay on top";
             this.stayOnTopCheckbox.UseVisualStyleBackColor = true;
             this.stayOnTopCheckbox.CheckedChanged += new System.EventHandler(this.stayOnTopCheckbox_CheckedChanged);
@@ -148,7 +148,7 @@
             this.enableClickTimerCheckbox.Location = new System.Drawing.Point(256, 52);
             this.enableClickTimerCheckbox.Name = "enableClickTimerCheckbox";
             this.enableClickTimerCheckbox.Size = new System.Drawing.Size(109, 17);
-            this.enableClickTimerCheckbox.TabIndex = 6;
+            this.enableClickTimerCheckbox.TabIndex = 7;
             this.enableClickTimerCheckbox.Text = "Enable click timer";
             this.enableClickTimerCheckbox.UseVisualStyleBackColor = true;
             this.enableClickTimerCheckbox.CheckedChanged += new System.EventHandler(this.enableClickTimerCheckbox_CheckedChanged);
@@ -180,35 +180,38 @@
             this.clickTimerUpdateTimer.Interval = 250;
             this.clickTimerUpdateTimer.Tick += new System.EventHandler(this.clickTimerUpdateTimer_Tick);
             // 
-            // enableRussiaConversion
-            // 
-            this.enableRussiaConversion.AutoSize = true;
-            this.enableRussiaConversion.Location = new System.Drawing.Point(11, 52);
-            this.enableRussiaConversion.Name = "enableRussiaConversion";
-            this.enableRussiaConversion.Size = new System.Drawing.Size(86, 17);
-            this.enableRussiaConversion.TabIndex = 2;
-            this.enableRussiaConversion.Text = "USSR Mode";
-            this.enableRussiaConversion.UseVisualStyleBackColor = true;
-            this.enableRussiaConversion.CheckedChanged += new System.EventHandler(this.enableRussiaConversion_CheckedChanged);
-            // 
             // transparentCheckbox
             // 
             this.transparentCheckbox.AutoSize = true;
-            this.transparentCheckbox.Location = new System.Drawing.Point(103, 52);
+            this.transparentCheckbox.Location = new System.Drawing.Point(103, 54);
             this.transparentCheckbox.Name = "transparentCheckbox";
             this.transparentCheckbox.Size = new System.Drawing.Size(147, 17);
-            this.transparentCheckbox.TabIndex = 3;
+            this.transparentCheckbox.TabIndex = 4;
             this.transparentCheckbox.Text = "Transparent (Ctrl+Shift+K)";
             this.transparentCheckbox.UseVisualStyleBackColor = true;
             this.transparentCheckbox.CheckedChanged += new System.EventHandler(this.transparentCheckbox_CheckedChanged);
+            // 
+            // modeComboBox
+            // 
+            this.modeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modeComboBox.FormattingEnabled = true;
+            this.modeComboBox.Items.AddRange(new object[] {
+            "Axis/Allies",
+            "British",
+            "USSR"});
+            this.modeComboBox.Location = new System.Drawing.Point(12, 52);
+            this.modeComboBox.Name = "modeComboBox";
+            this.modeComboBox.Size = new System.Drawing.Size(85, 21);
+            this.modeComboBox.TabIndex = 3;
+            this.modeComboBox.SelectedIndexChanged += new System.EventHandler(this.ModeComboBox_SelectedIndexChanged);
             // 
             // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 72);
+            this.ClientSize = new System.Drawing.Size(367, 80);
+            this.Controls.Add(this.modeComboBox);
             this.Controls.Add(this.transparentCheckbox);
-            this.Controls.Add(this.enableRussiaConversion);
             this.Controls.Add(this.lastHitCountdownLabel);
             this.Controls.Add(this.lastHitLabel);
             this.Controls.Add(this.stayOnTopCheckbox);
@@ -244,8 +247,8 @@
         private System.Windows.Forms.Label lastHitLabel;
         private System.Windows.Forms.Label lastHitCountdownLabel;
         private System.Windows.Forms.Timer clickTimerUpdateTimer;
-        private System.Windows.Forms.CheckBox enableRussiaConversion;
         private System.Windows.Forms.CheckBox transparentCheckbox;
+        private System.Windows.Forms.ComboBox modeComboBox;
     }
 }
 

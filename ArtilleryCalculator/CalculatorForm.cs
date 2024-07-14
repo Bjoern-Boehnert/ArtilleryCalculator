@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ArtilleryCalculator
@@ -26,7 +25,7 @@ namespace ArtilleryCalculator
             enableNumpadCheckbox.Checked = Properties.Settings.Default.EnableNumpadListener;
             stayOnTopCheckbox.Checked = Properties.Settings.Default.StayOnTop;
             enableClickTimerCheckbox.Checked = Properties.Settings.Default.EnableClickTimer;
-            enableRussiaConversion.Checked = Properties.Settings.Default.EnableRussiaConversion;
+            modeComboBox.SelectedItem = Properties.Settings.Default.ConversionMode;
 
             var updateChecker = new UpdateChecker(client);
             updateChecker.InitializeUpdateChecking();
@@ -103,19 +102,6 @@ namespace ArtilleryCalculator
             TopMost = Properties.Settings.Default.StayOnTop = stayOnTopCheckbox.Checked;
         }
 
-        private void enableRussiaConversion_CheckedChanged(object sender, EventArgs e)
-        {
-            var russiaConversion = Properties.Settings.Default.EnableRussiaConversion = enableRussiaConversion.Checked;
-            if (russiaConversion)
-            {
-                Converter = new RusDistanceElevationConverter();
-            }
-            else
-            {
-                Converter = new DistanceElevationConverter();
-            }
-        }
-
         private void distanceInput_ValueChanged(object sender, EventArgs e)
         {
             elevationInput.Value = Converter.ConvertDistanceToElevation(distanceInput.Value);
@@ -174,6 +160,24 @@ namespace ArtilleryCalculator
         {
             if (transparentCheckbox.Checked)
                 transparentCheckbox.Checked = false;
+        }
+
+        private void ModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var conversionMode = modeComboBox.SelectedItem;
+            switch (conversionMode)
+            {
+                case "Axis/Allies":
+                    Converter = new DistanceElevationConverter();
+                    break;
+                case "USSR":
+                    Converter = new RusDistanceElevationConverter();
+                    break;
+                case "British":
+                    Converter = new BritishDistanceElevationConverter();
+                    break;
+            }
+            distanceInput_ValueChanged(sender, e);
         }
     }
 }
